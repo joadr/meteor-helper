@@ -53,6 +53,13 @@ module.exports = MeteorHelper =
       description: 'Simulate running in production by minifying the \
         JS/CSS assets'
       order: 8
+    mup:
+      title: 'Override with MUP'
+      type: 'boolean'
+      default: false
+      description: 'Override these settings with mup.json settings'
+      order: 9
+
 
   meteorHelperView: null
 
