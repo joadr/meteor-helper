@@ -147,7 +147,7 @@ class MeteorHelperView extends View
     isMupPrjCreated = fs.existsSync mup_project_path
 
     # Only overwrite settings if a `mup.json` is available
-    if isMupPrjCreated
+    if isMupPrjCreated and @mupOverride
       try
         # @TODO Create better parsing stance
         cnt = fs.readFileSync mup_project_path
