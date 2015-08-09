@@ -132,6 +132,7 @@ class MeteorHelperView extends View
     @meteorPort = atom.config.get 'meteor-helper.meteorPort'
     @isMeteorProd = atom.config.get 'meteor-helper.production'
     @isMeteorDebug = atom.config.get 'meteor-helper.debug'
+    @mupOverride = atom.config.get 'meteor-helper.mup'
     @mongoURL = atom.config.get 'meteor-helper.mongoURL'
     @settingsPath = atom.config.get 'meteor-helper.settingsPath'
     # Check if the command is installed on the system
@@ -204,8 +205,8 @@ class MeteorHelperView extends View
     #  overwrite settings variables
     mup_project_path = path.join atom.project.getPaths()[0], 'mup.json'
     isMupPrjCreated = fs.existsSync mup_project_path
-    # Only overwrite settings if a `mup.json` is available
-    if isMupPrjCreated
+    # Only overwrite settings if a `mup.json` is available and mupOverride is set to true
+    if isMupPrjCreated && @mupOverride
       try
         cnt = fs.readFileSync mup_project_path
         mup = JSON.parse cnt
